@@ -56,8 +56,8 @@ btc();
 
 const bnb = async () => {
     try{
-        let apiBtc = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd&include_market_cap=true&include_24hr_vol=false&include_24hr_change=false&include_last_updated_at=false");
-        let apiDataBnb = await apiBtc.json();
+        let apiBnb = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd&include_market_cap=true&include_24hr_vol=false&include_24hr_change=false&include_last_updated_at=false");
+        let apiDataBnb = await apiBnb.json();
         
         const valueBnb = apiDataBnb["binancecoin"]["usd"]
         const capBnb = apiDataBnb["binancecoin"]["usd_market_cap"]
@@ -74,3 +74,24 @@ const bnb = async () => {
 }
 
 bnb();
+
+const pvu = async () => {
+    try{
+        let apiPvu = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=plant-vs-undead-token&vs_currencies=usd&include_market_cap=true&include_24hr_vol=false&include_24hr_change=false&include_last_updated_at=false");
+        let apiDataPvu = await apiPvu.json();
+        
+        const valuePvu = apiDataPvu["plant-vs-undead-token"]["usd"]
+        const capPvu = apiDataPvu["plant-vs-undead-token"]["usd_market_cap"]
+
+        const valuehtmlPvu = document.getElementById("valPvu")
+        valuehtmlPvu.innerHTML = `$. ${valuePvu}`
+
+        const caphtmlPvu = document.getElementById("capPvu");
+        caphtmlPvu.innerHTML = `Capitalización $. ${capPvu} `	
+
+    }catch(err){
+        console.log(err)
+    }
+}
+ 
+pvu();
